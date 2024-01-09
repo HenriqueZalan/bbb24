@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZehnirHosting - Canais</title>
+    <style>
+        /* Estilos para telas maiores (desktop) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #36393f; /* Cor de fundo: tom discord */
+            color: #fff; /* Cor do texto */
+            transition: background-color 0.3s; /* Adicionado transição para a cor de fundo */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .icon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .icon {
+            width: 28%; /* Aumentei um pouco o tamanho */
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Mistura de tons rosa e laranja */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden; /* Adicionado overflow para ocultar o botão fora do quadrado */
+        }
+
+        .icon img {
+            width: 120px; /* Aumentei um pouco o tamanho */
+            height: 120px; /* Aumentei um pouco o tamanho */
+            margin-bottom: 10px;
+            cursor: pointer; /* Adicionado cursor de ponteiro para indicar que é clicável */
+        }
+
+        .icon p {
+        margin: 0;
+        color: rgb(12, 11, 11); /* Adicionado a cor cinza para o texto das opções */
+       }   
+
+        .icon .option-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .icon:hover {
+            transform: scale(1.05);
+        }
+
+        .site-title {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .watch-now-button {
+            background-color: #0055cc; /* Cor azul escuro */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Adicionado efeito de transição */
+        }
+
+        .watch-now-button:hover {
+            background-color: #004080; /* Cor azul escuro mais escura ao passar o mouse */
+        }
+
+        /* Estilos para telas menores (celulares) */
+        @media only screen and (max-width: 600px) {
+            .icon {
+                width: 90%; /* Ajuste o tamanho conforme necessário para telas menores */
+            }
+
+            .icon img {
+                width: 80px; /* Ajuste o tamanho conforme necessário para telas menores */
+                height: 80px; /* Ajuste o tamanho conforme necessário para telas menores */
+            }
+
+            .site-title {
+                font-size: 18px; /* Ajuste o tamanho do título para telas menores */
+            }
+        }
+
+        /* Adicionando animação de rolagem suave */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        /* Adicionando sobreposição cinza ao passar o mouse sobre a página */
+        document.body.addEventListener('mouseover', function() {
+            document.body.style.backgroundColor = '#555'; // Cor cinza
+        });
+
+        document.body.addEventListener('mouseout', function() {
+            document.body.style.backgroundColor = '#36393f'; // Cor de fundo padrão
+        });
+
+        // Função JavaScript para exibir o iframe em tela cheia
+        function showIframe(iframeSrc) {
+            const iframeContainer = document.createElement('div');
+            iframeContainer.style.position = 'fixed';
+            iframeContainer.style.top = '0';
+            iframeContainer.style.left = '0';
+            iframeContainer.style.width = '100%';
+            iframeContainer.style.height = '100%';
+            iframeContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            iframeContainer.style.display = 'flex';
+            iframeContainer.style.alignItems = 'center';
+            iframeContainer.style.justifyContent = 'center';
+
+            const iframe = document.createElement('iframe');
+            iframe.src = iframeSrc;
+            iframe.allow = 'encrypted-media';
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = '0';
+            iframe.width = '100%';
+            iframe.height = '100%';
+
+            iframeContainer.appendChild(iframe);
+            document.body.appendChild(iframeContainer);
+
+            // Adiciona um evento de clique para fechar o iframe
+            iframeContainer.addEventListener('click', function () {
+                document.body.removeChild(iframeContainer);
+            });
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title"></div>
+    </header>
+
+    <div class="icon-container">
+        <div class="icon">
+            <div class="option-number">1</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 1">
+            <p>Acompanhe a Casa</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">1</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 1">
+            <p>Acompanhe a Casa 2</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb2')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">2</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 2">
+            <p>Cozinha</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb3')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">3</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 3">
+            <p>Quarto Magia</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb4')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">4</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 4">
+            <p>Quarto Fada</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb5')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">5</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 5">
+            <p>Quarto Gnomo</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb6')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">6</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 6">
+            <p>Sala</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb7')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">7</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 7">
+            <p>Cozinha Delícia</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb8')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">8</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 8">
+            <p>Chuveiro Pantene</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb9')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">9</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 9">
+            <p>Jardim</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb10')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">10</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 10">
+            <p>Piscina</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb11')">Assistir Agora</button>
+        </div>
+
+        <div class="icon">
+            <div class="option-number">11</div>
+            <img src="bbb-24-png-1.png" alt="Ícone 10">
+            <p>BBB Mosaico</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb12')">Assistir Agora</button>
+        </div>
+    
+        <div class="icon">
+            <div class="option-number">12</div>
+            <img src="Logotipo_da_TV_Globo.png" alt="Ícone 10">
+            <p>TV Globo Paraná</p>
+            <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=globopr-rpccuritiba')">Assistir Agora</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Esta função será executada quando o DOM estiver completamente carregado
+    
+            // Crie um elemento div para a mensagem
+            const messageContainer = document.createElement('div');
+            messageContainer.style.position = 'fixed';
+            messageContainer.style.top = '0';
+            messageContainer.style.left = '0';
+            messageContainer.style.width = '100%';
+            messageContainer.style.backgroundColor = '#333';
+            messageContainer.style.color = '#fff';
+            messageContainer.style.padding = '10px';
+            messageContainer.style.textAlign = 'center';
+            messageContainer.style.zIndex = '9999'; // Certifique-se de que a mensagem esteja acima de outros elementos
+    
+            // Adicione a mensagem desejada
+            messageContainer.innerHTML = 'Quando clicar em 1 uma opção clique na tela, clique pra voltar e clique no play!';
+    
+            // Adicione o elemento div ao corpo da página
+            document.body.appendChild(messageContainer);
+    
+            // Feche a mensagem após alguns segundos (por exemplo, 5 segundos)
+            setTimeout(function () {
+                document.body.removeChild(messageContainer);
+            }, 5000);
+        });
+    
+        // Função JavaScript para exibir uma mensagem com a imagem clicada
+        function showImage(imageSrc, optionText) {
+            alert('Você clicou em: ' + optionText);
+        }
+    
+        // Função JavaScript para o botão "Assistir Agora"
+        function watchNow() {
+            alert('Assistindo agora!');
+        }
+    
+        // Função JavaScript para exibir o iframe em tela cheia
+        function showIframe(iframeSrc) {
+            const iframeContainer = document.createElement('div');
+            iframeContainer.style.position = 'fixed';
+            iframeContainer.style.top = '0';
+            iframeContainer.style.left = '0';
+            iframeContainer.style.width = '100%';
+            iframeContainer.style.height = '100%';
+            iframeContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            iframeContainer.style.display = 'flex';
+            iframeContainer.style.alignItems = 'center';
+            iframeContainer.style.justifyContent = 'center';
+    
+            const iframe = document.createElement('iframe');
+            iframe.src = iframeSrc;
+            iframe.allow = 'encrypted-media';
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = '0';
+            iframe.width = '100%';
+            iframe.height = '100%';
+    
+            iframeContainer.appendChild(iframe);
+            document.body.appendChild(iframeContainer);
+    
+            // Adiciona um evento de clique para fechar o iframe
+            iframeContainer.addEventListener('click', function () {
+                document.body.removeChild(iframeContainer);
+            });
+        }
+    </script>
+    </body>
+    </html>
+    
