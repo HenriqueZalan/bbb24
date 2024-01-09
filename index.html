@@ -4,7 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entrar</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="./style.css" />
+    <style>
+      /* Adicione seus estilos aqui */
+      .fire-emoji {
+        font-size: 2em; /* Ajuste o tamanho conforme necessário */
+      }
+
+      .copyright {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px; /* Ajuste o tamanho conforme necessário */
+        font-family: Arial, sans-serif; /* Use a fonte do site ou a desejada */
+      }
+
+      /* Adicionando estilos para o link clicável */
+      .copyright a {
+        color: #fff; /* Cor do link (branco) */
+        text-decoration: none;
+      }
+
+      .copyright a:hover {
+        text-decoration: underline;
+      }
+    </style>
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -14,15 +44,15 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="canais.html" class="sign-in-form" method="get" onsubmit="redirectToCanais()">
+          <form class="sign-in-form" onsubmit="validateLogin(); return false;">
             <h2 class="title">Entrar</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nome de Usuário" />
+              <input type="text" placeholder="Nome de Usuário" id="username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Senha" />
+              <input type="password" placeholder="Senha" id="password" />
             </div>
             <input type="submit" value="Entrar" class="btn solid" />
           </form>
@@ -32,7 +62,7 @@
         <div class="panel left-panel">
           <div class="content">
             <h3>Nossos Termos!</h3>
-            <p>Nunca recorra a métodos para contornar o processo de login, pois isso resultará no cancelamento da sua assinatura.</p>
+            <p>Nunca recorra a métodos para contornar o processo de login, pois isso resultará no cancelamento da sua assinatura. <span class="fire-emoji">🔥</span></p>
           </div>
           <img src="./img/log.svg" class="image" alt="">
         </div>
@@ -47,12 +77,56 @@
       </div>
     </div>
 
+    <div class="copyright">
+      &copy; Feito por <a href="http://bit.ly/henriquewzp" target="_blank">Henrique</a> ❤️
+    </div>
+
     <script src="./app.js"></script>
     <script>
-      function redirectToCanais() {
-        window.location.href = 'canais.html';
-        return false; // Evita que o formulário seja enviado normalmente
-      }
+// Função para validar o login
+function validateLogin() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // Verifica se as credenciais são válidas
+  if ((username === "admin" && password === "admin01@") || 
+      (username === "carla" && password === "carla01@") || 
+      (username === "luciana" && password === "luciana01@")) {
+
+    // Adiciona informações de login e data de expiração ao localStorage
+    var expirationDate = new Date();
+    expirationDate.setMonth(expirationDate.getMonth() + 1); // Adiciona 1 mês
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("username", username);
+    localStorage.setItem("expirationDate", expirationDate.toString());
+    
+    // Redireciona para a página após o login
+    window.location.href = 'canais.html';
+  } else {
+    alert("Usuário ou senha incorretos. Tente novamente.");
+  }
+}
+
+// Função para verificar o estado de login ao carregar a página
+window.onload = function() {
+  var loggedIn = localStorage.getItem("loggedIn");
+  var expirationDate = new Date(localStorage.getItem("expirationDate"));
+
+  // Se o usuário estiver logado e a assinatura estiver ativa, redireciona
+  if (loggedIn === "true" && isSubscriptionActive(expirationDate)) {
+    var username = localStorage.getItem("username");
+    alert("Bem-vindo de volta, " + username + "!");
+    window.location.href = 'canais.html';
+  } else if (loggedIn === "true") {
+    alert("Sua conta está suspensa. Por favor, renove seu pacote de assinatura.");
+  }
+};
+
+// Função para verificar se a assinatura está ativa
+function isSubscriptionActive(expirationDate) {
+  var currentDate = new Date();
+  return currentDate < expirationDate;
+}
     </script>
   </body>
 </html>

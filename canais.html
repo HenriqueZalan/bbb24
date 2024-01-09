@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZehnirHosting - Canais</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* Estilos para telas maiores (desktop) */
         body {
@@ -155,17 +156,88 @@
                 document.body.removeChild(iframeContainer);
             });
         }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column; /* Alterado para um layout de coluna */
+            align-items: center; /* Adicionado para centralizar horizontalmente */
+        }
+
+        .logout-button {
+            background-color: #ff4d4d; /* Cor vermelha */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Efeito de transição */
+            margin-top: 10px; /* Adicionado espaço superior para afastar do título */
+        }
+
+        .logout-button:hover {
+            background-color: #cc0000; /* Cor vermelha mais escura ao passar o mouse */
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between; /* Adicionado para distribuir os elementos */
+            align-items: center; /* Adicionado para centralizar verticalmente */
+        }
+
+        .logout-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logout-button {
+            background-color: #ff4d4d; /* Cor vermelha */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Efeito de transição */
+            margin-left: 10px; /* Adicionado espaço à esquerda */
+        }
+
+        .time-left {
+            color: #fff;
+            margin-left: 10px; /* Adicionado espaço à esquerda */
+        }
+        .button-container {
+    display: flex;
+    align-items: center;
+}
+
+#userButton {
+    margin-right: 10px; /* Adapte a margem conforme necessário */
+}
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="site-title"></div>
+        <div class="button-container">
+            <div class="logout-container">
+                <button class="logout-button" onclick="logout()">Deslogar</button>
+                <div class="time-left" id="timeLeft"></div>
+            </div>
+        </div>
     </header>
 
     <div class="icon-container">
         <div class="icon">
-            <div class="option-number">1</div>
+            <div class="option-number">0</div>
             <img src="bbb-24-png-1.png" alt="Ícone 1">
             <p>Acompanhe a Casa</p>
             <button class="watch-now-button" onclick="showIframe('https://reidoscanais.com/embed/?id=bbb')">Assistir Agora</button>
@@ -272,8 +344,6 @@
             messageContainer.style.textAlign = 'center';
             messageContainer.style.zIndex = '9999'; // Certifique-se de que a mensagem esteja acima de outros elementos
     
-            // Adicione a mensagem desejada
-            messageContainer.innerHTML = 'Quando clicar em 1 uma opção clique na tela, clique pra voltar e clique no play!';
     
             // Adicione o elemento div ao corpo da página
             document.body.appendChild(messageContainer);
@@ -322,8 +392,28 @@
             iframeContainer.addEventListener('click', function () {
                 document.body.removeChild(iframeContainer);
             });
+        } 
+
+        // Função para realizar o logout
+        function logout() {
+            console.log("Logout realizado"); // Adicione este console.log
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("username");
+            window.location.href = 'index.html';
         }
+            // Adicione o evento de clique ao botão do usuário
+    document.getElementById('userButton').addEventListener('click', function () {
+        // Verifique se o usuário está logado
+        if (localStorage.getItem('loggedIn')) {
+            // Se logado, redirecione para "usuario.html"
+            window.location.href = 'usuario.html';
+        } else {
+            // Se não logado, exiba uma mensagem ou realize a ação desejada
+            alert('Você precisa estar logado para acessar esta página.');
+        }
+    });
+
     </script>
-    </body>
-    </html>
+</body>
+</html>
     
